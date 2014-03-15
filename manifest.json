@@ -1,6 +1,6 @@
 {
 	"name": "Sticker - Stock Ticker on Tab",
-	"version": "1.2.9",
+	"version": "1.3.0",
 	"description": "Sticker, a stock ticker extension, displays vital stock information on the browser's tab",
 	"content_scripts": [
 		{
@@ -18,6 +18,10 @@
 	"background" : {
 		"scripts" : ["js/background.js"]
 		},
+   "omnibox": {
+      "keyword": "sticker"
+   },
 	"options_page": "options.html",
-	"manifest_version": 2
+	"manifest_version": 2,
+   "permissions": [ "<all_urls>" ]
 }

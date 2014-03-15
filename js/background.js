@@ -33,6 +33,9 @@ var stickerbackground = stickerbackground || {
 		
 		if(stickerbackground.retreiveFromLocalStorage('sticker_stock_frequency') == "")
 			stickerbackground.storetoLocalStorage("sticker_stock_frequency", 5);
+
+		if(stickerbackground.retreiveFromLocalStorage('sticker_status') == "")
+			stickerbackground.storetoLocalStorage("sticker_status", "true");
 	
 	}
 };
@@ -61,11 +64,14 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	
       	var displayFrequency = stickerbackground.retreiveFromLocalStorage('sticker_display_frequency');
       	var stockFrequency = stickerbackground.retreiveFromLocalStorage('sticker_stock_frequency');
+      	var status = stickerbackground.retreiveFromLocalStorage('sticker_status');
+      	stickerbackground.goNoGo = status;
      
      	//log 
      	console.log("background.js onrequest - tickers %s", tickers.substring(0,tickers.length -1));
      	console.log("background.js onrequest - stock_frequency %s ",stockFrequency);
      	console.log("background.js onrequest - display_frequency %s", displayFrequency);
+     	console.log("background.js onrequest - status %s", status);
      	console.log("background.js onrequest - goNoGo %s", stickerbackground.goNoGo);
      	
   
@@ -155,6 +161,8 @@ chrome.omnibox.onInputEntered.addListener(
     if(text === "start"){
     	
     	stickerbackground.goNoGo = "true";
+    	stickerbackground.storetoLocalStorage("sticker_status", "true");
+
     	
     	//send 'resumeAction' (start) to active tab and 'resetAction' (stop) to the rest.
     	chrome.tabs.query( new Object(), function(tabs){
@@ -170,6 +178,20 @@ chrome.omnibox.onInputEntered.addListener(
  	 	});
 
  	}else if( text === "stop"){
+ 		
+ 		stickerbackground.goNoGo = "false";
+ 		stickerbackground.storetoLocalStorage("sticker_status", "false");
+
+ 		
+    	//send 'resetAction' (stop) to all tabs
+    	chrome.tabs.query( new Object(), function(tabs){
+ 			for(var i=0; i < tabs.length;i++){
+ 	 			chrome.tabs.sendMessage(tabs[i].id,{method: "resetAction"});
+ 	 		}
+ 	 	});
+ 
+ 
+ 	}else if( text === "pause"){
  		
  		stickerbackground.goNoGo = "false";
  		
