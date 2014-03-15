@@ -1,0 +1,131 @@
+<html>
+<head><title>Sticker - Options </title>
+
+<script src="js/options.js"></script>
+
+
+<style type="text/css">
+
+table{
+	align:center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.default-input-text {
+	border: 1px solid #afafaf;
+	font-size:1.1em;
+	text-align:center;
+	width:65px;
+}
+
+
+.default-input-text focus{
+	border-color: #339933;
+}
+
+.error-input-text{
+	border: 1px solid #ff0000;
+}
+
+
+.message{
+	color:  #ff0000;
+}
+
+
+table{
+	border: 0px;
+}
+
+
+button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+
+button:hover {
+	background-color:#dfdfdf;
+}
+
+button:active {
+	position:relative;
+	top:1px;
+}
+
+
+</style>
+
+</head>
+
+<body>
+<div>
+<table>
+	<tr>
+		<td style="text-align:center" colspan="2">
+			<h3>Sticker Settings</h3>
+		</td>
+	</tr>
+	<tr>
+		<td style="height:30px;text-align:center" colspan="2">
+			<div class="message" id="status"></div>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Stock ticker symbols : 
+		</td>
+		<td>
+			<input class="default-input-text" type="text" id="tickers1"/>
+			<input type="hidden" id="tickers1_valid"/>
+			<input class="default-input-text" type="text" id="tickers2"/>
+			<input type="hidden" id="tickers2_valid"/>
+			<input class="default-input-text" type="text" id="tickers3"/>
+			<input type="hidden" id="tickers3_valid"/>
+			<input class="default-input-text" type="text" id="tickers4"/>
+			<input type="hidden" id="tickers4_valid"/>
+			<input class="default-input-text" type="text" id="tickers5"/>
+			<input type="hidden" id="tickers5_valid"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Display refresh frequency (in seconds) : 
+		</td>
+		<td>
+			<input class="default-input-text" type="text" id="displayFrequency"/>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Stock refresh frequency (in mins) : 
+		</td>
+		<td>
+			<input class="default-input-text" type="text" id="stockFrequency"/>
+		</td>
+	</tr>
+	<tr>
+		<td style="text-align:center" colspan="2">
+			<button id="save">Save</button>
+		</td>
+	</tr>
+<table>
+</div>
+</body>
+
+
+</html>
