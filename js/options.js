@@ -138,7 +138,7 @@ stickeroptions.validateStockTicker =  function (widgetid) {
 			}
 		}
 	
-		var url = 'http://www.google.com/finance/info?client=ig&q=' + ticker;
+		var url = 'https://www.google.com/finance/info?client=ig&q=' + ticker;
 		xhr.open('GET', url, true);
 		document.getElementById('save').disabled = true;
 	
