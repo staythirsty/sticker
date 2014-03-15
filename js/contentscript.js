@@ -1,7 +1,7 @@
 var sticker = sticker || {
 
 	'config' : {
-		'url' : 'http://www.google.com/finance/info?client=ig&q=',
+		'url' : 'https://www.google.com/finance/info?client=ig&q=',
 		'currentScrollText' : '~' + document.title,
 		'newScrollText' : '',
 		'counter' : 0 ,
